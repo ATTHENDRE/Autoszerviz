@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Program
+namespace Autoszerviz
 {
     public class Jarmu
     {
@@ -16,13 +16,12 @@ namespace Program
 
         private bool szervizSzukseges;
 
-        public Jarmu(string rendszam, int kor, int kilometerOra, int uzemanyagSzint, bool szervizSzukseges)
+        public Jarmu(string rendszam, int kor, int kilometerOra, int uzemanyagSzint)
         {
             Rendszam = rendszam;
             Kor = kor;
             KilometerOra = kilometerOra;
             UzemanyagSzint = uzemanyagSzint;
-            this.szervizSzukseges = szervizSzukseges;
         }
 
         public string Rendszam
@@ -31,13 +30,18 @@ namespace Program
 
             set
             {
-                if (value == null && value == "")
+                if (value == null || value == "")
                 {
-                    value = "ISMERETLEN";
+                    rendszam = "ISMERETLEN";
+                }
+                else
+                {
+                    rendszam = value;
                 }
             }
-
         }
+
+
         public int Kor
         {
             get => kor;
@@ -46,11 +50,15 @@ namespace Program
             {
                 if (value > 50)
                 {
-                    value = 50;
+                    kor = 50;
                 }
                 else if (value < 0)
                 {
-                    value = 0;
+                    kor = 0;
+                }
+                else
+                {
+                    kor = value;
                 }
             }
         }
@@ -61,7 +69,11 @@ namespace Program
             {
                 if (value < 0)
                 {
-                    value = 0;
+                    kilometerOra = 0;
+                }
+                else
+                {
+                    kilometerOra = value;
                 }
             }
         }
@@ -72,23 +84,28 @@ namespace Program
             {
                 if (value > 100)
                 {
-                    value = 100;
+                    uzemanyagSzint = 100;
                 }
                 else if (value < 0)
                 {
-                    value = 0;
+                    uzemanyagSzint = 0;
+                }
+                else
+                {
+                    uzemanyagSzint = value;
                 }
             }
         }
         public bool SzervizSzukseges
         {
-            get => szervizSzukseges;
+            get => KilometerOra >= 200000;
             set
             {
-                if (KilometerOra > 200000)
+                if (KilometerOra >= 200000)
                 {
                     value = true;
                 }
+
             }
 
         }

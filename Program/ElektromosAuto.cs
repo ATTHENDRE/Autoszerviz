@@ -1,35 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Program
+namespace Autoszerviz
 {
     public class ElektromosAuto : Jarmu
     {
-        private int AkkumulatorSzint;
+        private int akkumulatorSzint;
 
-        public ElektromosAuto(string rendszam, int kor, int kilometerOra, int uzemanyagSzint, bool szervizSzukseges, int akkumulatorSzint) : base(rendszam, kor, kilometerOra, uzemanyagSzint, szervizSzukseges)
+        public ElektromosAuto(string rendszam,int kor, int kilometerOra, int uzemanyagSzint, int akkumulatorSzint) : base(rendszam, kor, kilometerOra, uzemanyagSzint)
         {
             AkkumulatorSzint = akkumulatorSzint;
-            uzemanyagSzint = 0;
+            UzemanyagSzint = 0;
         }
 
-        public int AkkumulatorSzint1
+        public int AkkumulatorSzint
         {
-            get => AkkumulatorSzint;
+            get => akkumulatorSzint;
+
             set
             {
                 if (value < 0)
                 {
-                    value = 0;
+                    akkumulatorSzint = 0;
                 }
                 else if (value > 100)
                 {
-                    value = 100;
+                    akkumulatorSzint = 100;
+                }
+                else
+                {
+                    akkumulatorSzint = value;
                 }
             }
         }
-
 
         public override void InformaciotAd()
         {
@@ -41,11 +43,11 @@ namespace Program
             if (dij > 100000)
             {
                 KilometerOra -= 10000;
-                AkkumulatorSzint -= 20;
-                Console.WriteLine("jármű szervizelése megtörtént!");
             }
+
+            AkkumulatorSzint += 20;
+
+            Console.WriteLine("jármű szervizelése megtörtént!");
         }
-
-
     }
 }
