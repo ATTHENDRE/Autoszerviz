@@ -6,13 +6,13 @@ namespace Program
 {
     public class Jarmu
     {
-        private string Rendszam;
+        private string rendszam;
 
-        private int Kor;
+        private int kor;
 
-        private int KilometerOra;
+        private int kilometerOra;
 
-        private int UzemanyagSzint;
+        private int uzemanyagSzint;
 
         private bool szervizSzukseges;
 
@@ -25,9 +25,9 @@ namespace Program
             this.szervizSzukseges = szervizSzukseges;
         }
 
-        public string Rendszam1
+        public string Rendszam
         {
-            get => Rendszam;
+            get => rendszam;
 
             set
             {
@@ -38,10 +38,9 @@ namespace Program
             }
 
         }
-
-        public int Kor1
+        public int Kor
         {
-            get => Kor;
+            get => kor;
 
             set
             {
@@ -55,10 +54,9 @@ namespace Program
                 }
             }
         }
-
-        public int KilometerOra1
+        public int KilometerOra
         {
-            get => KilometerOra;
+            get => kilometerOra;
             set
             {
                 if (value < 0)
@@ -67,9 +65,9 @@ namespace Program
                 }
             }
         }
-        public int UzemanyagSzint1
+        public int UzemanyagSzint
         {
-            get => UzemanyagSzint;
+            get => uzemanyagSzint;
             set
             {
                 if (value > 100)
@@ -98,14 +96,14 @@ namespace Program
 
 
 
-        public void InformaciotAd()
+        public virtual void InformaciotAd()
         {
             Console.WriteLine($"{Rendszam} - {Kor} éves jármű, {KilometerOra} km-rel");
         }
 
 
 
-        public void Szervizel(int dij)
+        public virtual void Szervizel(int dij)
         {
              if(dij > 100000)
             {

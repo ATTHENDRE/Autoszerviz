@@ -31,16 +31,16 @@ namespace Program
         }
 
 
-        public void InformaciotAd()
+        public override void InformaciotAd()
         {
-            Console.WriteLine($"{Rendszam1} - {Kor1} éves elektromos autó, {KilometerOra1} km-rel");
+            Console.WriteLine($"{Rendszam} - {Kor} éves elektromos autó, {KilometerOra} km-rel");
         }
 
-        public void Szervizel(int dij)
+        public override void Szervizel(int dij)
         {
             if (dij > 100000)
             {
-                KilometerOra1 -= 10000;
+                KilometerOra -= 10000;
                 AkkumulatorSzint -= 20;
                 Console.WriteLine("jármű szervizelése megtörtént!");
             }
